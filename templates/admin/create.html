@@ -1,0 +1,39 @@
+{% extends 'base/index.html' %}
+
+{% block content %}
+
+    {% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }} {{ field.label }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+
+    <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+        {{ form.title.label }}
+        {{ form.title }}
+        <br><br><br>
+        {{ form.description.label }}
+        {{ form.description }}
+        <br><br><br>
+        {{ form.image.label }}
+        {{ form.image }}
+        <br><br><br>
+
+        {{ form.is_visible.label }}
+        {{ form.is_visible }}
+        <br><br><br>
+
+        <button type="submit">Отправить</button>
+    </form>
+
+{% endblock %}
