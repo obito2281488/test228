@@ -6,7 +6,7 @@ from django.db import models
 class Category(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField(null=True, blank=True)
-    image = models.ImageField(upload_to='media/category/', null=True, blank=True)
+    image = models.ImageField(upload_to='category/', null=True, blank=True)
     is_visible = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
